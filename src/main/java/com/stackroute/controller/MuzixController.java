@@ -2,6 +2,8 @@ package com.stackroute.controller;
 
 
 import com.stackroute.domain.Track;
+import com.stackroute.exception.TrackAlreadyExistException;
+import com.stackroute.exception.TrackNotFoundException;
 import com.stackroute.service.TrackService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +32,7 @@ public class MuzixController {
     }
     @ApiOperation(value = "adds new track ")
     @PostMapping("track")
-    public ResponseEntity<?> saveUser(@RequestBody Track track)
+    public ResponseEntity<?> saveUser(@RequestBody Track track) throws TrackAlreadyExistException
     {
         ResponseEntity responseEntity;
 
@@ -51,7 +53,7 @@ public class MuzixController {
 
     @ApiOperation(value = "updates the existing track with the new track")
     @PutMapping(value="/track")
-    public ResponseEntity<?> updateTrack(@RequestBody Track track)
+    public ResponseEntity<?> updateTrack(@RequestBody Track track) throws TrackNotFoundException
     {
 
 
@@ -63,7 +65,7 @@ public class MuzixController {
     @ApiOperation(value = "deletes existing track")
 
     @DeleteMapping(value = "/track/{trackId}")
-    public ResponseEntity<?> removeTrack(@PathVariable int trackId)
+    public ResponseEntity<?> removeTrack(@PathVariable int trackId) throws TrackNotFoundException
     {
 
         trackService.deleteTrack(trackId);
