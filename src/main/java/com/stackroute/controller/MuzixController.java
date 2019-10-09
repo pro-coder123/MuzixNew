@@ -66,5 +66,10 @@ public class MuzixController {
 
         return responseEntity;
     }
+    @GetMapping(value = "/track/{trackName}")
+    public ResponseEntity<?> searchTrack(@PathVariable String trackName)
+    {
+        return new ResponseEntity<>(trackService.searchTrack(trackName),HttpStatus.OK);
+    }
 
 }

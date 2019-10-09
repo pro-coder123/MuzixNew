@@ -1,14 +1,20 @@
 package com.stackroute.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table( name = "Tracks" )
 public class Track {
 
     @Id
+    @Column(name="id")
     int id;
+    @Column(name="name")
     String name;
+    @Column(name="column")
     String comment;
 
     public int getId() {

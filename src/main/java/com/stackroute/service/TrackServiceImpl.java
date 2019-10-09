@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -49,6 +50,11 @@ public class TrackServiceImpl implements TrackService {
         if(trackRepository.existsById(track.getId()))
             return;trackRepository.save(track);
 
+    }
+    @Override
+    public List<String> searchTrack(String name)
+    {
+        return trackRepository.trackSearch(name);
     }
 
 
