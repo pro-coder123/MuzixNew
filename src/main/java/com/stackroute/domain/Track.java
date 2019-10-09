@@ -1,5 +1,7 @@
 package com.stackroute.domain;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table( name = "Tracks" )
+@Data
 public class Track {
 
     @Id
@@ -17,41 +20,8 @@ public class Track {
     @Column(name="column")
     String comment;
 
-    public int getId() {
-        return id;
-    }
+    public Track(){}
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
-
-    public Track() {
-    }
 
     public Track(int id, String name, String comment) {
         this.id = id;
